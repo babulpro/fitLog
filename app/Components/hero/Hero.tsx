@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 
-const HeroPage = () => {
+const Hero = () => {
     return (
-        <div className='container mt-0 m-auto '>
+        <div className='container mt-0 m-auto bg-[#15171d] rounded-xl '>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6  '>
                 <div className='  flex justify-center items-center'>
                     <div className='p-1 md:p-3'>
@@ -25,4 +25,4 @@ const HeroPage = () => {
     );
 };
 
-export default HeroPage;
+export default Hero;

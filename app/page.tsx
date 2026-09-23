@@ -1,9 +1,12 @@
 import React from 'react';
+import Hero from './Components/hero/Hero';
+import Libray from './Components/Library/libray';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Hello babul</h1>
+    <div className='mt-20'>
+      <Hero/>
+      <Libray/>
     </div>
   );
 };
