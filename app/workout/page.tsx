@@ -1,9 +1,11 @@
 import React from 'react';
+import HeroPage from '../Components/hero/Hero';
+ 
 
 const WorkOutPage = () => {
     return (
-        <div>
-         
+        <div className='mt-20'>
+           <HeroPage/>
         </div>
     );
 };
