@@ -1,13 +1,13 @@
 import { singleLibrayById } from '@/app/action/libray';
+import PlanButtons from '@/app/Components/planAndSaveButton/PlanButton';
 import Image from 'next/image';
 import React from 'react';
-import { Plus, Bookmark } from 'lucide-react';
+ 
 
 const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     const { id } = await params;
     const libDetails = await singleLibrayById(Number(id));
 
-    // Safety check in case the ID doesn't exist
     if (!libDetails) {
         return (
             <div className="min-h-screen flex items-center justify-center text-white">
@@ -16,7 +16,6 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
         );
     }
 
-    // Helper array to dynamically render the stats grid cleanly
     const statsData = [
         { label: 'EQUIPMENT', value: libDetails.equipment },
         { label: 'DIFFICULTY', value: libDetails.difficulty },
@@ -46,7 +45,6 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                 {/* RIGHT COLUMN: Details */}
                 <div className="flex flex-col justify-center">
                     
-                    {/* Header section */}
                     <div className="mb-6">
                         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-3">
                             {libDetails.name}
@@ -56,7 +54,6 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                         </p>
                     </div>
 
-                    {/* Muscle Groups Tags */}
                     <div className="flex flex-wrap gap-2 mb-8">
                         {libDetails.muscleGroups.map((muscle) => (
                             <span 
@@ -68,7 +65,6 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                         ))}
                     </div>
 
-                    {/* Stats Grid Box */}
                     <div className="bg-[#111827] rounded-xl p-5 mb-8">
                         <div className="flex flex-col">
                             {statsData.map((stat, index) => (
@@ -89,7 +85,6 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                         </div>
                     </div>
 
-                    {/* Instructions Section */}
                     <div className="mb-10">
                         <h2 className="text-lg font-bold uppercase tracking-wider mb-4 text-white">
                             Instructions
@@ -103,18 +98,11 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                         </ol>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center gap-4 mt-auto">
-                        <button className="flex-1 min-w-[200px] flex items-center justify-center gap-2 bg-[#D4FF00] text-black font-bold uppercase tracking-wide px-6 py-4 rounded-xl hover:bg-[#bae600] transition-colors duration-200">
-                            <Plus size={20} strokeWidth={3} />
-                            Add to Today's plan
-                        </button>
-                        
-                        <button className="flex-1 min-w-[200px] flex items-center justify-center gap-2 bg-transparent border-2 border-gray-800 text-white font-bold uppercase tracking-wide px-6 py-4 rounded-xl hover:border-gray-600 hover:bg-gray-900 transition-colors duration-200">
-                            <Bookmark size={20} />
-                            Save for later
-                        </button>
-                    </div>
+                    {/* 
+                        REPLACED BUTTONS WITH CLIENT COMPONENT 
+                        We pass the libDetails data down as the 'workout' prop.
+                    */}
+                    <PlanButtons workout={libDetails} />
 
                 </div>
             </div>

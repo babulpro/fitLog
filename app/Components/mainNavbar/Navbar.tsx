@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import SaveNavbar from './subNavnar/Save';
  
+ 
 
 const Navbar = () => {
   const pathname = usePathname();
   const links = [
-    { name: "Workouts", url: "/workout" },
+    { name: "Workouts", url: "/" },
     { name: "My Plan", url: "/plan" },
   ];
 
