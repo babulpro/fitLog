@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import SaveNavbar from './subNavnar/Save';
+import SaveNavbar from './subNavnar/Save'; // Adjust path if needed!
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -20,8 +20,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between relative">
         
         {/* LEFT SIDE: Hamburger (Mobile) + Logo */}
-        <div className="flex items-center gap-3 z-50">
-          {/* Mobile Menu Button (Hamburger) - Only visible on small screens */}
+        <div className="flex items-center gap-3">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-1 text-gray-400 hover:text-white transition-colors focus:outline-none"
@@ -30,7 +29,6 @@ const Navbar = () => {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Logo */}
           <Link href="/" className="text-xl font-bold tracking-wider">
             FITLOG
           </Link>
@@ -45,9 +43,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.url}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'bg-[#d4ff00] text-black'
-                    : 'text-gray-400 hover:text-white'
+                  isActive ? 'bg-[#d4ff00] text-black' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -56,8 +52,8 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* RIGHT SIDE: Save/Plan Counters */}
-        <div className="flex items-center gap-4 z-50">
+        {/* RIGHT SIDE: Plan & Saved (Pushed to the end with ml-auto) */}
+        <div className="flex items-center ml-auto">
           <SaveNavbar />
         </div>
       </div>
