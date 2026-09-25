@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import SaveNavbar from './subNavnar/Save'; // Adjust path if needed!
+import Image from 'next/image';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -28,8 +29,10 @@ const Navbar = () => {
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+           
 
-          <Link href="/" className="text-xl font-bold tracking-wider">
+          <Link href="/" className="text-xl font-bold tracking-wider flex">
+          <Image src={"/logo.png"} width={200} height={100} alt='brand image of the fit log' className='w-5 h-5 mr-2'/>
             FITLOG
           </Link>
         </div>
