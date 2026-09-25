@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { usePlan } from '@/app/contex/librayContext'; // Adjust path if needed!
 import PlanCard from './PlanCard'; // We will extract the card here too
+import toast from 'react-hot-toast';
 
 type SortOption = 'duration' | 'rating' | 'calories' | 'sets';
 
@@ -34,6 +35,10 @@ const PlanClient = () => {
     // Remove Logic
     const handleRemove = (e: React.MouseEvent, itemId: number) => {
         e.preventDefault(); 
+         toast.success(`Remove successfully!`, {
+            style: { border: '1px solid #d4ff00', padding: '16px', color: '#d4ff00' },
+            iconTheme: { primary: '#d4ff00', secondary: '#000' },
+        });
         if (activeTab === 'today') {
             setPlan(plan.filter((item) => item.id !== itemId));
         } else {

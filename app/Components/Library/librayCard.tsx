@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 import { Clock, Flame, Star } from 'lucide-react';
+import { Workout } from '@/app/type';
 
-const LibrayCard = ({ item }) => {
+const LibrayCard = ({ item }:{item:Workout}) => {
     // Destructure for cleaner JSX
     const { image, muscleGroups, name, equipment, duration, caloriesBurned, rating } = item;
 

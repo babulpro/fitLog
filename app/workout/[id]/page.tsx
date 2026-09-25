@@ -55,7 +55,7 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-8">
-                        {libDetails.muscleGroups.map((muscle) => (
+                        {libDetails.muscleGroups.map((muscle:string) => (
                             <span 
                                 key={muscle} 
                                 className="bg-[#D4FF00] text-black text-xs font-bold uppercase px-3 py-1.5 rounded-full tracking-wider"
@@ -90,7 +90,7 @@ const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                             Instructions
                         </h2>
                         <ol className="list-decimal list-inside space-y-3 text-gray-400 text-sm md:text-base">
-                            {libDetails.instructions.map((step, index) => (
+                            {libDetails.instructions.map((step:string, index:number) => (
                                 <li key={index} className="leading-relaxed pl-1">
                                     <span className="text-gray-300 ml-1">{step}</span>
                                 </li>

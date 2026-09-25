@@ -2,6 +2,7 @@ import { gerLibray } from '@/app/action/libray';
 import Link from 'next/link';
 import React from 'react';
 import LibrayCard from './librayCard';
+import { Workout } from '@/app/type';
 
 const Libray =async () => {
     const libraies = await gerLibray()
@@ -13,7 +14,7 @@ const Libray =async () => {
             <div className='mt-3 grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-6'>
                 {libraies.length>0 &&
 
-                    libraies.map((item)=>
+                    libraies.map((item:Workout)=>
                         
                         <Link key={item.id} href={`/workout/${item.id}`}>
                             <LibrayCard item={item}/>

@@ -22,7 +22,7 @@ const SaveNavbar = () => {
       </Link>
       
       <Link 
-        href="/saved" 
+        href="/plan" 
         className="text-sm text-gray-400 hover:text-white flex items-center gap-1.5 transition-colors"
       >
         Saved

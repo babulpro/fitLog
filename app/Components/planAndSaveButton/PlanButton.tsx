@@ -4,6 +4,7 @@ import React from 'react';
  
 import { Plus, Bookmark } from 'lucide-react';
 import { usePlan } from '@/app/contex/librayContext';
+import toast from 'react-hot-toast';
 
 // We pass the 'workout' (libDetails) down from the Server Component as a prop
 const PlanButtons = ({ workout }: { workout: any }) => {
@@ -17,12 +18,20 @@ const PlanButtons = ({ workout }: { workout: any }) => {
     const handleAddToPlan = () => {
         if (!isInPlan) {
             setPlan([...plan, workout]);
+             toast.success(`added successfully to your plan!`, {
+            style: { border: '1px solid #d4ff00', padding: '16px', color: '#d4ff00' },
+            iconTheme: { primary: '#d4ff00', secondary: '#000' },
+        });
         }
     };
 
     const handleSaveForLater = () => {
         if (!isSaved) {
             setSavePlan([...savePlan, workout]);
+             toast.success(`  added successfully to your save later!`, {
+            style: { border: '1px solid #d4ff00', padding: '16px', color: '#d4ff00' },
+            iconTheme: { primary: '#d4ff00', secondary: '#000' },
+        });
         }
     };
 
