@@ -29,11 +29,37 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <PlanProvider>
-          <Toaster position="top-right" toastOptions={{ style: { background: '#111827', color: '#fff', border: '1px solid #1f2937' } }} />
+         
 
         <Navbar/>
         {children}
         <Footer/>
+         <Toaster 
+                position="top-right"
+                toastOptions={{
+                    // Default styles for all toasts
+                    style: {
+                        background: '#111827',
+                        color: '#fff',
+                        border: '1px solid #1f2937',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                    },
+                    // Your custom success styles
+                    success: {
+                        style: {
+                            border: '1px solid #d4ff00',
+                            padding: '16px',
+                            color: '#d4ff00', 
+                            background: '#0A0A0A', 
+                        },
+                        iconTheme: {
+                            primary: '#d4ff00',
+                            secondary: '#000',
+                        },
+                    },
+                }}
+            />
         </PlanProvider>
         </body>
     </html>
