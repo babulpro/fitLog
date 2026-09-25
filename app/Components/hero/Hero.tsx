@@ -4,7 +4,7 @@ import React from 'react';
 const Hero = () => {
     return (
         
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 '>
             
       
             <div className='bg-[#15171d] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg'>
