@@ -7,17 +7,17 @@ const Footer = () => {
             <div className='max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4'>
                 
                 {/* Left Side: Logo */}
-                <div className='flex items-center'>
-                    {/* Since your logo is in the public folder, you just reference it as "/logo.png" */}
-                    <div className='w-8 h-4 flex'>
-                        <Image 
-                        src="/logo.png" 
-                        alt="FitLog Logo" 
-                        width={120} 
-                        height={35} 
-                        className="object-contain"
-                    />
-                    <h1 className='ml-2 '>FITLOG</h1>
+                <div className='flex items-center justify-center  '>
+                    
+                    <div className='w-20 h-4 flex'>
+                                <Image 
+                                src="/logo.png" 
+                                alt="FitLog Logo" 
+                                width={120} 
+                                height={35} 
+                                className="object-contain"
+                            />
+                            <h1 className='ml-2 '>FITLOG</h1>
                     </div>
                 </div>
 

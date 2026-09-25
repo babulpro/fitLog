@@ -8,15 +8,14 @@ const LibrayCard = ({ item }:{item:Workout}) => {
     const { image, muscleGroups, name, equipment, duration, caloriesBurned, rating } = item;
 
     return (
-        <div className='bg-[#111827] text-white rounded-2xl overflow-hidden shadow-lg w-full max-w-sm flex flex-col'>
+        <div className='bg-[#111827] text-white rounded-2xl overflow-hidden shadow-lg w-full  flex flex-col'>
             {/* Image Container */}
-            <div className='relative w-full h-48'>
+            <div className='relative w-full h-60'>
                 <Image 
                     src={image} 
                     alt={name || 'Workout image'} 
                     fill
-                    className='object-cover'
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className='object-cover' 
                 />
             </div>
 
