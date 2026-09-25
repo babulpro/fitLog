@@ -19,7 +19,7 @@ const Hero = () => {
                         </p>
                         
                         {/* Main Heading */}
-                        <h1 className='text-[#ffffff] text-3xl sm:text-4xl lg:text-5xl font-black my-4 lg:my-6 leading-tight'>
+                        <h1 className='text-[#ffffff] text-3xl sm:text-4xl lg:text-5xl font-black my-4 lg:my-6 leading-tight font-oswald'>
                             TRAIN WITH INTENT.<br className="hidden sm:block" /> LOG EVERY SET.
                         </h1>
                         
