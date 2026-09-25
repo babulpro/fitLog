@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Clock, Flame, Star, Layers, Trash2 } from 'lucide-react';
+import toast from 'react-hot-toast'; // 1. Import toast
+import { usePlan } from '@/app/contex/librayContext'; // 2. Import usePlan (Adjust path if needed!)
 
 const PlanCard = ({ 
     item, 
@@ -14,8 +16,35 @@ const PlanCard = ({
     activeTab: 'today' | 'saved'; 
     handleRemove: (e: React.MouseEvent, id: number) => void 
 }) => {
+    // 3. Get the plan state from Context
+    const { plan, setPlan } = usePlan();
+    
+    // 4. Check if this specific item is already marked as done
+    const isDone = item.isDone || false;
+
+    // 5. Create the handler for "Mark as Done"
+    const handleMarkAsDone = () => {
+        // Update the plan array in Context. 
+        // We map through it, find the matching ID, and add 'isDone: true'
+        const updatedPlan = plan.map((p) => 
+            p.id === item.id ? { ...p, isDone: true } : p
+        );
+        setPlan(updatedPlan);
+
+        // Show the toast message
+        toast.success(`${item.name} marked as completed!`, {
+            style: { 
+                border: '1px solid #d4ff00', 
+                padding: '16px', 
+                color: '#d4ff00',
+                background: '#0A0A0A'
+            },
+            iconTheme: { primary: '#d4ff00', secondary: '#000' },
+        });
+    };
+
     return (
-        <div className="bg-[#111827] border border-gray-800 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className={`bg-[#111827] border rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 transition-colors ${isDone ? 'border-[#d4ff00]/50' : 'border-gray-800'}`}>
             
             {/* Left: Image & Details */}
             <div className="flex items-center gap-4 w-full md:w-auto">
@@ -23,7 +52,9 @@ const PlanCard = ({
                     <Image src={item.image} alt={item.name} fill className="object-cover" sizes="(max-width: 768px) 80px, 96px" />
                 </div>
                 <div>
-                    <h3 className="font-bold text-lg uppercase leading-tight">{item.name}</h3>
+                    <h3 className={`font-bold text-lg uppercase leading-tight transition-colors ${isDone ? 'text-gray-500 line-through' : 'text-white'}`}>
+                        {item.name}
+                    </h3>
                     <p className="text-gray-400 text-xs mb-3">{item.equipment}</p>
                     
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-400">
@@ -58,8 +89,16 @@ const PlanCard = ({
                 </Link>
                 
                 {activeTab === 'today' && (
-                    <button className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider bg-[#d4ff00] text-black rounded-full hover:bg-[#bae600] transition-colors">
-                        Mark as Done
+                    <button 
+                        onClick={handleMarkAsDone}
+                        disabled={isDone}
+                        className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full transition-colors ${
+                            isDone 
+                                ? 'bg-gray-800 text-gray-500 cursor-not-allowed border border-gray-700' 
+                                : 'bg-[#d4ff00] text-black hover:bg-[#bae600]'
+                        }`}
+                    >
+                        {isDone ? 'Completed' : 'Mark as Done'}
                     </button>
                 )}
             </div>

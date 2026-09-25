@@ -97,8 +97,7 @@ const PlanClient = () => {
                         >
                             <option value="duration">Duration (Shortest)</option>
                             <option value="calories">Calories (Highest)</option>
-                            <option value="rating">Rating (Highest)</option>
-                            <option value="sets">Sets (Highest)</option>
+                            <option value="rating">Rating (Highest)</option> 
                         </select>
                         <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                             <ChevronDown size={14} />
